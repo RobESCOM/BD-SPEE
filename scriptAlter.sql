@@ -6,3 +6,7 @@ create table tcd07_servicios_nota(
 alter table tb01_nota add column cantidad int4;
 alter table tcd03_nota_pago alter column fh_emision type date;
 alter table tcd07_servicios_nota add column cantidad int4;
+
+INSERT INTO public.tp05_carpeta_pago
+(st_activo, fh_creacion)
+VALUES(true, current_date);
