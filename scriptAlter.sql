@@ -10,3 +10,6 @@ alter table tcd07_servicios_nota add column cantidad int4;
 INSERT INTO public.tp05_carpeta_pago
 (st_activo, fh_creacion)
 VALUES(true, current_date);
+
+alter table tau03_cuenta add column st_activa bool not null;
+update tau03_cuenta set st_activa = true;
