@@ -21,6 +21,9 @@ update tau03_cuenta set st_activa = true;
 -- Se borra el campo de estatus en la tabla usuario
 alter table tau02_usuario drop column st_activo;
 
+alter table tc04_notificacion add column id_destinatario int4 references tau03_cuenta(id_cuenta);
+alter table tc04_notificacion add column fecha_envio date;
+
 update tau02_usuario set tx_login = 'administrador_dentales_matutino@ipn.com.mx' where tx_login = 'administrador_dentales@ipn.com.mx';
 INSERT INTO tau02_usuario(tx_login, tx_password, st_activo, fh_alta)VALUES('administrador_dentales_vespertino@ipn.com.mx', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '2018/09/25');
 INSERT INTO tau03_cuenta(id_usuario, id_perfil)VALUES( 15, 3, true);
@@ -34,3 +37,6 @@ INSERT INTO tc01_catalogo_area(nb_area, ds_descripcion, st_activa, responsable) 
 
 -- Se agrega nuevo perfil default
 INSERT INTO tau01_perfil(nb_perfil, ds_perfil, st_activo) VALUES('Default', 'Perfil que se asigna al registrar a un nuevo responsable de área', true);
+
+alter table tc04_notificacion add column id_destinatario int4 references tau03_cuenta(id_cuenta);
+alter table tc04_notificacion add column fecha_envio date;
