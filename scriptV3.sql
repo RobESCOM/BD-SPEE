@@ -193,12 +193,11 @@ INSERT INTO tp03_tipo_comprobante(tx_nombre, tx_descripcion, st_activo)VALUES('S
 INSERT INTO tp03_tipo_comprobante(tx_nombre, tx_descripcion, st_activo)VALUES('Voucher', 'Comprobante de pago adjunto por el usuario', true);
 
 create table tp04_corte_caja(
+	id_corte_caja	serial primary key,
 	id_cuenta		int4 references tau03_cuenta(id_cuenta),
-	id_pago_dia		int4 references tp01_pago_dia(id_pago_dia),
-	tx_turno 		varchar(1) not null,
 	st_corte 		bool not null,
-	fh_corte		date not null,
-	primary key(id_cuenta, id_pago_dia));
+	fh_corte		date not null
+  );
 
 create table tp05_carpeta_pago(
 	id_carpeta		serial primary key,

@@ -40,3 +40,5 @@ INSERT INTO tau01_perfil(nb_perfil, ds_perfil, st_activo) VALUES('Default', 'Per
 
 alter table tc04_notificacion add column id_destinatario int4 references tau03_cuenta(id_cuenta);
 alter table tc04_notificacion add column fecha_envio date;
+
+alter table tp01_pago_dia add column corte_caja bool;
