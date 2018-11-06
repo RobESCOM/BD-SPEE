@@ -42,3 +42,10 @@ alter table tc04_notificacion add column id_destinatario int4 references tau03_c
 alter table tc04_notificacion add column fecha_envio date;
 
 alter table tp01_pago_dia add column corte_caja bool;
+
+-- Pago SIGA
+CREATE TABLE tp07_pago_siga(id_siga serial primary key,
+							tx_archivo bytea NOT NULL,
+							fh_envio date NOT NULL, 
+ 							id_cuenta int4 references tau03_cuenta(id_cuenta),
+							id_pago int4 references tp01_pago_dia(id_pago_dia));
