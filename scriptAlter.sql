@@ -49,3 +49,9 @@ CREATE TABLE tp07_pago_siga(id_siga serial primary key,
 							fh_envio date NOT NULL, 
  							id_cuenta int4 references tau03_cuenta(id_cuenta),
 							id_pago int4 references tp01_pago_dia(id_pago_dia));
+
+-- Tabla servicios efectuados
+CREATE TABLE tp06_servicio_efectuado(
+	id_pago references tp01_pago_dia(id_pago_dia) primary key,
+	fh_aprobado date not null,
+);
