@@ -89,3 +89,10 @@ create table tp04_corte_caja(
 	primary key(id_corte_caja));
 INSERT INTO tp04_corte_caja (id_cuenta, st_corte, fh_corte, total_corte)
 VALUES(13, true, current_date, 1455.50);
+
+create table tp08_pagos_corte(
+	id_pago_corte serial primary key,
+    id_corte_caja int4 references tp04_corte_caja(id_corte_caja),
+	id_pago int4 references tp01_pago_dia(id_pago_dia),
+	id_cuenta int4 references tau03_cuenta(id_cuenta),
+	fecha_pago date);
