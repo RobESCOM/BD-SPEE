@@ -55,3 +55,37 @@ CREATE TABLE tp06_servicio_efectuado(
 	id_pago int4 references tp01_pago_dia(id_pago_dia) primary key,
 	fh_aprobado date not null
 );
+
+-- Se borra tabla servicios_nota
+drop table tcd07_servicios_nota;
+
+-- Tablaa registro usuario
+create table tau05_usr_ipn (
+id_inf_personal varchar(18) references tau04_informacion_personal(clave) primary key,
+num_ipn varchar(10) not null);
+
+-- Inserts
+INSERT INTO tau04_informacion_personal(clave, tx_nombre, tx_primer_apellido, tx_segundo_apellido, tx_celular, tx_correo, id_cuenta)VALUES('30092018', 'Felipe de Jesus', 'Figueroa', 'del Prado', '5522456789', 'subdirector_administrativo@ipn.com.mx' , 1);
+INSERT INTO tau04_informacion_personal(clave, tx_nombre, tx_primer_apellido, tx_segundo_apellido, tx_celular, tx_correo, id_cuenta)VALUES('31092018', 'Karla', 'Pineda', 'Ruiz', '5521842090', 'administrador_celex@ipn.com.mx' , 2);
+INSERT INTO tau04_informacion_personal(clave, tx_nombre, tx_primer_apellido, tx_segundo_apellido, tx_celular, tx_correo, id_cuenta)VALUES('32092018', 'Emma', 'López', 'Jr.', '5521842091', 'administrador_dentales@ipn.com.mx' , 3);
+INSERT INTO tau04_informacion_personal(clave, tx_nombre, tx_primer_apellido, tx_segundo_apellido, tx_celular, tx_correo, id_cuenta)VALUES('33092018', 'Josefina', 'V.', 'Perez', '5521842092', 'administrador_biblioteca@ipn.com.mx' , 4);
+INSERT INTO tau04_informacion_personal(clave, tx_nombre, tx_primer_apellido, tx_segundo_apellido, tx_celular, tx_correo, id_cuenta)VALUES('34092018', 'Pedro', 'Morales', 'Nieto', '5521842093', 'administrador_fotocopiado@ipn.com.mx' , 5);
+INSERT INTO tau04_informacion_personal(clave, tx_nombre, tx_primer_apellido, tx_segundo_apellido, tx_celular, tx_correo, id_cuenta)VALUES('35092018', 'José', 'Hernandez', 'Rodriguez', '5521842094', 'administrador_cajero@ipn.com.mx' , 6);
+INSERT INTO tau04_informacion_personal(clave, tx_nombre, tx_primer_apellido, tx_segundo_apellido, tx_celular, tx_correo, id_cuenta)VALUES('36092018', 'Patricia', 'Mata', 'Gil', '5521842095', 'contador_general@ipn.com.mx' , 7);
+INSERT INTO tau04_informacion_personal(clave, tx_nombre, tx_primer_apellido, tx_segundo_apellido, tx_celular, tx_correo, id_cuenta)VALUES('2014630206', 'Fernanda', 'Campos', 'Gomez', '5512489658', 'fernanda.ca.g@gmail.com', 11);
+INSERT INTO tau04_informacion_personal(clave, tx_nombre, tx_primer_apellido, tx_segundo_apellido, tx_celular, tx_correo, id_cuenta)VALUES('MUJV920407HDFRPS03', 'Victor Edgar', 'Mujica', 'Jr.', '5512469874', 'victor.mu.jr@gmail.com', 12);
+INSERT INTO tau04_informacion_personal(clave, tx_nombre, tx_primer_apellido, tx_segundo_apellido, tx_celular, tx_correo, id_cuenta)VALUES('2012630293', 'Roberto', 'Mendoza', 'Saavedra', '5521842095', 'isc.robertomendoza@gmail.com' , 13);
+INSERT INTO tau04_informacion_personal(clave, tx_nombre, tx_primer_apellido, tx_segundo_apellido, tx_celular, tx_correo, id_cuenta)VALUES('2013630206', 'César Erick', 'Hernández', 'López', '5573316482', 'cesar.je.lo@gmail.com', 14);
+INSERT INTO tau04_informacion_personal(clave, tx_nombre, tx_primer_apellido, tx_segundo_apellido, tx_celular, tx_correo, id_cuenta)VALUES('2009630293', 'Ulises', 'Velez', 'Saavedra', '5521842435', 'ulises@gmail.com' , 15);
+INSERT INTO tau04_informacion_personal(clave, tx_nombre, tx_primer_apellido, tx_segundo_apellido, tx_celular, tx_correo, id_cuenta)VALUES('IPJV920507HDFRPS07', 'Issac', 'Perez', 'Perez', '5573315582', 'issac@gmail.com', 16);
+
+-- Tabla corte caja
+create table tp04_corte_caja(
+    id_corte_caja   serial,
+	id_cuenta		int4 references tau03_cuenta(id_cuenta),
+	st_corte 		bool not null,
+	fh_corte		date not null,
+	total_corte    float,
+	primary key(id_corte_caja));
+INSERT INTO tp04_corte_caja (id_cuenta, st_corte, fh_corte, total_corte)
+VALUES(13, true, current_date, 1455.50);
